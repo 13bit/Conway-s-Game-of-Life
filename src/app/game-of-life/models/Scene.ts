@@ -5,6 +5,7 @@ export class Scene {
   private _height: number;
   private _stepNumber?: number;
   private _grid: Row[] = [];
+  private _prevGrid: Row[] = [];
 
 
   get width(): number {
@@ -37,5 +38,13 @@ export class Scene {
 
   set grid(value: Row[]) {
     this._grid = value;
+  }
+
+  get prevGrid(): Row[] {
+    return this._prevGrid;
+  }
+
+  set prevGrid(value: Row[]) {
+    this._prevGrid = value;
   }
 }

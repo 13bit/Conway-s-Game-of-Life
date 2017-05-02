@@ -3,6 +3,7 @@
   height: 15px;
   background-color: cornflowerblue;
   margin-left: 1px;
+  margin-bottom: 1px;
   display: inline-block;
 }
 .life-cell {

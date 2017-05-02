@@ -1,13 +1,25 @@
 <div class="container">
   <h3>Game of Life</h3>
-  <div class="row"></div>
+  <div *ngIf="game">
+    <h4>Step: {{game.step}}</h4>
+    <div class="row"></div>
 
-  <div class="scene" *ngIf="game">
-    <div *ngFor="let row of game.scene.grid">
-      <div class="cell"
-           *ngFor="let cell of row.cells"
-           [ngClass]="{'life-cell': cell.condition == true}">
+    <div class="scene">
+      <div *ngFor="let row of game.scene.grid">
+        <div class="cell"
+             *ngFor="let cell of row.cells"
+             [ngClass]="{'life-cell': cell.condition == true}"
+             (click)="getPoint(cell)">
+          <!--<span style="font-size: 10px">X:{{cell.x}}; Y: {{cell.y}}</span>-->
+        </div>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button class="btn btn-success" (click)="nextStep()">Next step</button>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+
 </div>
