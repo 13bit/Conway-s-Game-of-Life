@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+.cell {
+  width: 15px;
+  height: 15px;
+  background-color: cornflowerblue;
+  margin-left: 1px;
+  display: inline-block;
+}
+
+.scene {
+  border: 1px solid blue;
+}
