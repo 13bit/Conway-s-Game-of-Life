@@ -4,7 +4,9 @@
 
   <div class="scene" *ngIf="game">
     <div *ngFor="let row of game.scene.grid">
-      <div class="cell" *ngFor="let cell of row.cells">
+      <div class="cell"
+           *ngFor="let cell of row.cells"
+           [ngClass]="{'life-cell': cell.condition == true}">
       </div>
     </div>
   </div>

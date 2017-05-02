@@ -8,12 +8,16 @@ export class SceneService {
   constructor() {
   }
 
-  public initScene(width: number, height: number): Scene {
+  public initScene(width: number, height: number, cells: GameCell[] = []): Scene {
     let scene = new Scene();
     scene.width = width;
     scene.height = height;
 
     scene = this.addGrid(scene);
+
+    if (cells.length) {
+      scene = this.addPointToGrid(scene, cells);
+    }
 
     return scene;
   }
@@ -29,6 +33,16 @@ export class SceneService {
 
       scene.grid.push(row);
     }
+
+    return scene;
+  }
+
+  protected addPointToGrid(scene: Scene, points: GameCell[]): Scene {
+    points.forEach(point => {
+      if (scene.grid[point.x] && scene.grid[point.x].cells[point.y]) {
+        scene.grid[point.x].cells[point.y]['condition'] = point.condition;
+      }
+    });
 
     return scene;
   }
