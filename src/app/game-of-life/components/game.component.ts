@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {GameService} from '../services/game.service';
 import {Game} from '../models/Game';
 import {SceneService} from '../services/scene.service';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/timer';
+
 @Component({
   selector: 'game',
   templateUrl: 'game.component.html'
@@ -9,6 +12,8 @@ import {SceneService} from '../services/scene.service';
 
 export class GameComponent implements OnInit {
   game: Game;
+  speed: number = 1;
+  timerSubscription;
 
   constructor(private gameService: GameService,
               private sceneService: SceneService) {
@@ -18,8 +23,27 @@ export class GameComponent implements OnInit {
     this.game = this.gameService.initGame();
   }
 
-  start() {
+  incrementSpeed(): void {
+    this.speed++;
+  }
 
+  decrementSpeed(): void {
+    (this.speed > 1) ? this.speed-- : '';
+
+  }
+
+  start() {
+    const timer$ = Observable.timer(1000, 1000 / this.speed);
+     this.timerSubscription = timer$.subscribe(() => this.game = this.gameService.nextStep(this.game));
+  }
+
+  pause() {
+    this.timerSubscription.unsubscribe();
+  }
+
+  stop() {
+    this.timerSubscription.unsubscribe();
+    this.game = this.gameService.initGame();
   }
 
   nextStep() {

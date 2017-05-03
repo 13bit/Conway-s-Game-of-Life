@@ -5,21 +5,30 @@
     <div class="row"></div>
 
     <div class="scene">
-      <div *ngFor="let row of game.scene.grid">
-        <div class="cell"
-             *ngFor="let cell of row.cells"
-             [ngClass]="{'life-cell': cell.condition == true}"
-             (click)="getPoint(cell)">
-          <!--<span style="font-size: 10px">X:{{cell.x}}; Y: {{cell.y}}</span>-->
+      <div class="scene-wrap">
+        <div class="game-row" *ngFor="let row of game.scene.grid">
+          <div class="cell"
+               *ngFor="let cell of row.cells"
+               [ngClass]="{'life-cell': cell.condition == true}"
+               (click)="getPoint(cell)">
+          </div>
         </div>
       </div>
+
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
+      <button class="btn btn-primary" (click)="start()">Start</button>
+      <button class="btn btn-primary" (click)="pause()">Pause</button>
+      <button class="btn btn-primary" (click)="stop()">Stop</button>
       <button class="btn btn-success" (click)="nextStep()">Next step</button>
     </div>
-    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <h4>Speed: {{speed}}</h4>
+      <button class="btn btn-warning" (click)="incrementSpeed()">+</button>
+      <button class="btn btn-warning" (click)="decrementSpeed()">-</button>
+    </div>
   </div>
 
 </div>

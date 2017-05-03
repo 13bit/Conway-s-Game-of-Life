@@ -2,14 +2,28 @@
   width: 15px;
   height: 15px;
   background-color: cornflowerblue;
-  margin-left: 1px;
-  margin-bottom: 1px;
+  margin-right: 1px;
   display: inline-block;
+  cursor: pointer;
 }
 .life-cell {
   background-color: crimson;
 }
 
 .scene {
-  border: 1px solid blue;
+  overflow-x: auto;
+  overflow-y: auto;
+  width: 800px;
+  height: 500px;
+}
+
+.scene-wrap {
+  width: 5000px;
+}
+.game-row {
+  padding: 0px;
+  margin: 0px;
+  line-height: 1px;
+  margin-bottom: 1px;
+
 }

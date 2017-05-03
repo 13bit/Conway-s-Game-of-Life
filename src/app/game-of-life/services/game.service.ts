@@ -33,7 +33,7 @@ export class GameService {
     ];
 
 
-    game.scene = this.sceneService.initScene(20, 20, cells);
+    game.scene = this.sceneService.initScene(200, 200, cells);
 
     return game;
   }
